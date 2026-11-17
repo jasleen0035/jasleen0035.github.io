@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Jasleen Kaur, M.S. student in Plant Science at the University of Missouri, studying root anatomy and wheat genetics.">
+<link rel="icon" href="images/root-cross-section.jpg">
+<title>Jasleen Kaur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column; hero pairs name with a root cross-section, then a few plain sections. */
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --fg: #1c2230;
+  --muted: #5a6274;
+  --rule: #dfe2ea;
+  --accent: #3a3fb8;       /* fluorescence blue from the micrograph */
+  --straw: #9a7420;        /* wheat straw, used sparingly */
+  --tile: #0b0d1c;         /* micrograph backdrop, dark in both themes */
+  --tile-fg: #c9ccff;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10131c; --surface: #171b27; --fg: #e6e8ef; --muted: #a0a7b8;
+    --rule: #2a3040; --accent: #9da2ff; --straw: #d9b45c; --tile: #05060e; --tile-fg: #c9ccff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10131c; --surface: #171b27; --fg: #e6e8ef; --muted: #a0a7b8;
+  --rule: #2a3040; --accent: #9da2ff; --straw: #d9b45c; --tile: #05060e; --tile-fg: #c9ccff;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 1rem; line-height: 1.6;
+}
+.wrap {
+  max-width: 62rem; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 3rem 4rem;
+  display: grid; gap: 3.5rem;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 2.5rem; align-items: center; }
+.hero-text { display: grid; gap: 1.1rem; min-width: 0; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 3.8rem); line-height: 1.05; font-weight: 400; }
+.namerow { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.headshot {
+  width: 6.5rem; height: 6.5rem; border-radius: 50%; object-fit: cover; flex: none;
+  border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--rule);
+}
+.hero .role { font-size: 1.1rem; color: var(--muted); }
+.hero .lede { font-family: var(--display); font-size: 1.3rem; line-height: 1.45; max-width: 34rem; }
+.hero .lede em { color: var(--accent); font-style: italic; }
+.links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; font-size: 0.95rem; }
+
+figure.micro { margin: 0; display: grid; gap: 0.6rem; }
+.micro-frame {
+  position: relative; background: var(--tile); border-radius: 50%;
+  aspect-ratio: 1; max-width: 100%; overflow: hidden;
+}
+.micro-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pin {
+  position: absolute; left: 68.3%; top: 43.8%;
+  width: 0.7rem; height: 0.7rem; margin: -0.35rem 0 0 -0.35rem;
+  border: 1.5px solid #fff; border-radius: 50%;
+}
+.pin-label {
+  position: absolute; left: 59%; top: 72%;
+  font-family: var(--mono); font-size: 0.7rem; color: #fff;
+  background: rgba(5,6,14,0.7); padding: 0.15rem 0.45rem; border-radius: 3px;
+}
+.pin-line { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+figcaption { font-size: 0.82rem; color: var(--muted); text-align: center; }
+
+/* Sections */
+section { display: grid; gap: 1.4rem; }
+section > header { display: grid; gap: 0.35rem; border-top: 1px solid var(--rule); padding-top: 1.4rem; }
+section h2 { font-size: 1.75rem; }
+.prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+.strands { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.strand { display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
+.strand h3 { font-size: 1.15rem; }
+.strand .stat { font-family: var(--mono); font-size: 0.8rem; color: var(--straw); }
+.strand p { color: var(--muted); font-size: 0.95rem; }
+
+.gallery { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 1rem; }
+.gallery figure { margin: 0; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
+.gallery figure:first-child { grid-row: span 2; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; background: var(--rule); }
+.gallery figcaption { text-align: left; display: grid; gap: 0.1rem; }
+.gallery figcaption strong { color: var(--fg); font-weight: 600; font-size: 0.92rem; }
+
+.timeline { display: grid; gap: 1.6rem; }
+.job { display: grid; grid-template-columns: 9rem 1fr; gap: 1.25rem; }
+.job .when { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 0.25rem; font-variant-numeric: tabular-nums; }
+.job .what { display: grid; gap: 0.35rem; min-width: 0; }
+.job h3 { font-size: 1.1rem; }
+.job .org { color: var(--muted); font-size: 0.92rem; }
+.job ul { margin: 0.2rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.25rem; font-size: 0.95rem; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.two > div { display: grid; gap: 0.6rem; align-content: start; min-width: 0; }
+.two h3 { font-size: 1.1rem; }
+
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.pubs li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; font-size: 0.95rem; }
+.pubs .kind { font-family: var(--mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--straw); padding-top: 0.2rem; }
+.pubs .title { font-family: var(--display); font-size: 1.05rem; }
+.pubs .venue { color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.chip { font-size: 0.85rem; border: 1px solid var(--rule); background: var(--surface); padding: 0.2rem 0.65rem; border-radius: 999px; }
+
+.contact {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1.5rem; display: grid; gap: 0.9rem;
+}
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+.addr { font-family: var(--mono); font-size: 0.95rem; user-select: all; }
+button.copy {
+  font: inherit; font-size: 0.85rem; cursor: pointer;
+  background: var(--accent); color: var(--bg); border: 0; border-radius: 6px; padding: 0.35rem 0.8rem;
+}
+footer { font-size: 0.8rem; color: var(--muted); }
+
+@media (max-width: 760px) {
+  .wrap { padding-block: 2rem 3rem; gap: 2.75rem; }
+  .hero { grid-template-columns: 1fr; gap: 1.75rem; }
+  figure.micro { max-width: 20rem; justify-self: center; width: 100%; }
+  .strands, .two, .gallery { grid-template-columns: 1fr; }
+  .gallery figure:first-child { grid-row: auto; }
+  .job { grid-template-columns: 1fr; gap: 0.3rem; }
+  .pubs li { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+html { -webkit-text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* RAT image gallery */
+.rat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem;  }
+.rat-grid figure { margin: 0; display: grid; gap: 0.45rem; align-content: start; min-width: 0; }
+.rat-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; background: var(--tile); }
+.rat-grid figcaption { text-align: left; font-size: 0.85rem; display: grid; gap: 0.15rem; }
+.rat-grid figcaption strong { color: var(--fg); font-weight: 600; }
+.rat-meta { font-family: var(--mono); font-size: 0.74rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rat-method { font-family: var(--mono); font-size: 0.74rem !important; }
+
+
+/* Tools */
+.tool-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.4rem; display: grid; gap: 0.55rem; max-width: 44rem; }
+.tool-card h3 { font-size: 1.15rem; }
+.tool-card .tool-tag { font-family: var(--mono); font-size: 0.75rem; color: var(--straw); }
+.tool-card p { color: var(--muted); font-size: 0.95rem; margin: 0; }
+.tool-card .tool-facts { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+.tool-card a.tool-open { justify-self: start; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Plant science · Root anatomy · Wheat genetics</span>
+      <div class="namerow">
+        <img class="headshot" src="images/headshot.jpg" alt="Portrait of Jasleen Kaur">
+        <h1>Jasleen Kaur</h1>
+      </div>
+      <p class="role">M.S. student in Plant Science, University of Missouri</p>
+      <p class="lede">Plant researcher working on finding genes underlying <em>root anatomical traits</em> that can be used for crop improvement.</p>
+      <div class="links">
+        <a href="#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/jasleenkaur0035" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#research">Research</a>
+        <a href="#imaging">Imaging</a>
+        <a href="#tools">Tools</a>
+        <a href="#experience">Experience</a>
+      </div>
+    </div>
+    <figure class="micro">
+      <div class="micro-frame">
+        <img src="images/root-cross-section.jpg" alt="Maize root cross-section glowing blue under ultraviolet light, with a wide cortex of small cells around a ring of large metaxylem vessels">
+        <svg class="pin-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="68.3" y1="45.8" x2="66" y2="71" stroke="#fff" stroke-width="0.35" fill="none"/>
+        </svg>
+        <span class="pin" aria-hidden="true"></span>
+        <span class="pin-label">metaxylem vessel</span>
+      </div>
+      <figcaption>Maize root cross-section I imaged under ultraviolet light. The large openings in the ring around the centre are metaxylem vessels.</figcaption>
+    </figure>
+  </header>
+
+  <section id="about">
+    <header>
+      <span class="eyebrow">About</span>
+      <h2>Roots, water and crop genetics</h2>
+    </header>
+    <div class="prose">
+      <p>I am a graduate researcher in the Division of Plant Science and Technology at the University of Missouri, advised by Dr. Jagdeep Singh Sidhu. My work combines root phenotyping, quantitative genetics, genome-wide association analysis and functional genomics to find and test genes that control root vascular traits in crops.</p>
+      <p>Before Missouri, I did graduate research at South Dakota State University and earned a B.Tech. in Agricultural Biotechnology at Punjab Agricultural University, where I worked on cotton and maize in the field and under the microscope.</p>
+    </div>
+  </section>
+
+  <section id="research">
+    <header>
+      <span class="eyebrow">Research</span>
+      <h2>What I work on</h2>
+    </header>
+    <div class="strands">
+      <div class="strand">
+        <span class="stat">119 Watkins wheat landraces</span>
+        <h3>Finding the genes</h3>
+        <p>I measure root anatomy across a diverse collection of historic wheat landraces and run genome-wide association analysis, followed by linkage disequilibrium and haplotype analyses, to narrow down candidate genes for metaxylem vessel diameter and stele size.</p>
+      </div>
+      <div class="strand">
+        <span class="stat">Wheat · rice · Arabidopsis</span>
+        <h3>Testing what they do</h3>
+        <p>I phenotype mutant and gene-edited lines in wheat, rice and <i>Arabidopsis</i> to test whether a candidate gene changes vessel size and axial hydraulic conductance, the ease with which water moves along the root.</p>
+      </div>
+      <div class="strand">
+        <span class="stat">Root Anatomy Tool (RAT)</span>
+        <h3>Imaging for others</h3>
+        <p>I lead the Root Anatomy Tool shared imaging resource, imaging samples and training researchers from inside and outside the University of Missouri, from parasitic dodder stems to cottonwood and maize samples.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="imaging">
+    <header>
+      <span class="eyebrow">Imaging · Root Anatomy Tool</span>
+      <h2>Images from the Root Anatomy Tool</h2>
+    </header>
+    <div class="prose">
+      <p>Imaging is the part of research I love most. Every sample looks different under ultraviolet light, and I enjoy finding the angle that shows its structure clearly. These are cross-sections I imaged on the RAT shared resource: a parasitic dodder wrapped around its host, cottonwood, and maize.</p>
+      <p class="rat-method">Ultraviolet illumination · Dino-Lite camera on the RAT · 3840 × 2160 pixels · scale bars from the RAT calibration (pixels per mm = 7.10 × magnification)</p>
+    </div>
+    <div class="rat-grid">
+        <figure>
+          <img src="images/rat-dodder-1.jpg" alt="Cross-section of a parasitic dodder stem, glowing blue and pink under ultraviolet light, wrapped against the stem of its host plant" loading="lazy">
+          <figcaption><strong>Dodder (<i>Cuscuta</i>) coiled around its host stem</strong><span class="rat-meta">70.1× · 2 September 2026 · Image A056</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-dodder-2.jpg" alt="Dodder stem cross-section with a curved band of host tissue wrapping around one side" loading="lazy">
+          <figcaption><strong>Dodder curling around the host stem</strong><span class="rat-meta">70.1× · 2 September 2026 · Image A054</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-dodder-3.jpg" alt="Several dodder stem sections, pink and orange under ultraviolet light, packed among folded host tissue" loading="lazy">
+          <figcaption><strong>Dodder stems among host tissue</strong><span class="rat-meta">50.8× · 2 September 2026 · Image A058</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-dodder-4.jpg" alt="Host stem cross-section at the centre, ringed by many coiled dodder stems" loading="lazy">
+          <figcaption><strong>Host stem surrounded by dodder coils</strong><span class="rat-meta">50.8× · 2 September 2026 · Image A061</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-hoststem-1.jpg" alt="Close-up cross-section of the host plant stem, pale blue tissue with small vessels inside a red outer ring, under ultraviolet light" loading="lazy">
+          <figcaption><strong>Host stem in close-up</strong><span class="rat-meta">188.8× · 2 September 2026 · Image A050</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-cottonwood-1.jpg" alt="Cottonwood cross-section glowing pale blue under ultraviolet light on a dark background" loading="lazy">
+          <figcaption><strong>Cottonwood cross-section</strong><span class="rat-meta">38× · 19 August 2026 · Sample 100</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-cottonwood-2.jpg" alt="Cottonwood cross-section with a bright central core and a ring of small vascular bundles near the edge" loading="lazy">
+          <figcaption><strong>Cottonwood, ring of vascular bundles</strong><span class="rat-meta">60× · 19 August 2026 · Sample 214</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-cottonwood-3.jpg" alt="High-magnification cottonwood cross-section, a bright blue core with many open vessels inside a thin dark outer ring" loading="lazy">
+          <figcaption><strong>Cottonwood at high magnification</strong><span class="rat-meta">216.2× · 1 November 2026 · Sample 210</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/rat-maize-1.jpg" alt="Maize root cross-section under ultraviolet light, showing the outer cortex and a ring of large metaxylem vessels around the central stele" loading="lazy">
+          <figcaption><strong>Maize root cross-section</strong></figcaption>
+        </figure>
+    </div>
+  </section>
+
+  <section id="tools">
+    <header>
+      <span class="eyebrow">Tools · AI-assisted programming</span>
+      <h2>Tools I built</h2>
+    </header>
+    <div class="tool-card">
+      <span class="tool-tag">Root Anatomy Tool (RAT) facility · 2026</span>
+      <h3>Microscope Scale Calculator</h3>
+      <p>Type the magnification shown on the microscope screen and get the scale for that image, ready to paste into ImageJ. It also converts lengths and areas from pixels to micrometres. I calibrated it by photographing a millimetre ruler at seven magnifications and built it with AI-assisted coding. Everyone using the RAT facility now uses it to set the scale for their measurements.</p>
+      <span class="tool-facts">pixels per mm = 7.10 × magnification · R² = 0.987 · calibrated 14.7× to 175.5×</span>
+        <a class="tool-open" href="tools/scale-calculator.html" target="_blank" rel="noopener">Open the calculator &rarr;</a>
+    </div>
+  </section>
+
+  <section id="highlights">
+    <header>
+      <span class="eyebrow">Highlights · 2026</span>
+      <h2>Sharing the work</h2>
+    </header>
+    <div class="gallery">
+      <figure>
+        <img src="images/cafnr-poster.jpg" alt="Jasleen standing beside her research poster on root metaxylem vessel size in wheat at the CAFNR poster competition">
+        <figcaption><strong>CAFNR poster competition</strong>Genetic characterization of root metaxylem vessel size in wheat · University of Missouri</figcaption>
+      </figure>
+      <figure>
+        <img src="images/plant-talks.jpg" alt="Jasleen presenting her research seminar to an audience in a lecture room">
+        <figcaption><strong>Plant Talks seminar</strong>Interdisciplinary Plant Group, University of Missouri · September 2026</figcaption>
+      </figure>
+      <figure>
+        <img src="images/aspb-poster.jpg" alt="Jasleen and a lab colleague beside her poster at the ASPB Midwestern Section Meeting">
+        <figcaption><strong>ASPB Midwestern Section Meeting</strong>Poster session · Columbia, Missouri</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="experience">
+    <header>
+      <span class="eyebrow">Experience</span>
+      <h2>Research and teaching</h2>
+    </header>
+    <div class="timeline">
+      <div class="job">
+        <span class="when">Jun 2026 – present</span>
+        <div class="what">
+          <h3>Graduate Research Assistant</h3>
+          <span class="org">University of Missouri · Division of Plant Science and Technology</span>
+          <ul>
+            <li>Genome-wide association, linkage disequilibrium and haplotype analysis of root anatomical traits in wheat</li>
+            <li>Phenotyping of <i>Arabidopsis</i> T-DNA mutants in hydroponics and rice CRISPR lines</li>
+            <li>Management of EMS-mutagenized Kronos wheat lines for screening, backcrossing and drought studies</li>
+            <li>Root imaging with freehand cross-sections, compound microscopy and the Root Anatomy Tool; trait measurement in ImageJ</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <span class="when">Fall 2026</span>
+        <div class="what">
+          <h3>Laboratory Teaching Assistant, Fundamental Biology of Plants</h3>
+          <span class="org">University of Missouri · PLNT SCI 1500</span>
+          <ul>
+            <li>Lead weekly labs on plant cell biology, microscopy, plant anatomy and reproductive structures</li>
+            <li>Gave two guest lectures on DNA, the central dogma and inheritance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <span class="when">Oct 2025 – May 2026</span>
+        <div class="what">
+          <h3>Graduate Researcher</h3>
+          <span class="org">South Dakota State University · Agronomy, Horticulture and Plant Science</span>
+          <ul>
+            <li>Phenotyped Watkins wheat landraces for root vascular and architectural traits</li>
+            <li>Wheat hand emasculation and crossing; DNA extraction, primer design, PCR and gel electrophoresis</li>
+            <li>Statistical analysis in R and publication-quality figures</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <span class="when">2021 – 2025</span>
+        <div class="what">
+          <h3>Undergraduate Researcher</h3>
+          <span class="org">Punjab Agricultural University · Plant Breeding, Genetics and Phenotyping</span>
+          <ul>
+            <li>Field and microscopy phenotyping of cotton over two seasons</li>
+            <li>Maize tagging, bagging and hand pollination</li>
+            <li>SNP identification and ddRAD sequencing data processing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="talks">
+    <header>
+      <span class="eyebrow">Presentations</span>
+      <h2>Talks and posters</h2>
+    </header>
+    <ul class="pubs">
+      <li>
+        <span class="kind">Seminar</span>
+        <div><div class="title">Genetic characterization of root anatomical traits in wheat</div>
+        <div class="venue">Plant Talks seminar series, Interdisciplinary Plant Group, University of Missouri, 9 September 2026</div></div>
+      </li>
+      <li>
+        <span class="kind">Poster</span>
+        <div><div class="title">Genetic characterization of root metaxylem vessel size in wheat</div>
+        <div class="venue">CAFNR poster competition, University of Missouri, 2026</div></div>
+      </li>
+      <li>
+        <span class="kind">Poster</span>
+        <div><div class="title">Root metaxylem vessels and axial conductance in wheat, rice and <i>Arabidopsis</i></div>
+        <div class="venue">ASPB Midwestern Section Meeting, Columbia, Missouri, 2026</div></div>
+      </li>
+      <li>
+        <span class="kind">Poster</span>
+        <div><div class="title">Root cortical cell length as a phenotype to promote water and nitrogen use efficiency in corn</div>
+        <div class="venue">ASPB Midwestern Section Meeting, Columbia, Missouri, 2026 · co-author</div></div>
+      </li>
+      <li>
+        <span class="kind">Poster</span>
+        <div><div class="title">Morphological and biochemical characterization of intraspecific F<sub>1</sub> hybrids of <i>Gossypium arboreum</i> L.</div>
+        <div class="venue">International Conference on Climate-Resilient Agriculture for Sustainable Development, Banaras Hindu University, 2026 · co-author</div></div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <header>
+      <span class="eyebrow">Skills and education</span>
+      <h2>Toolkit</h2>
+    </header>
+    <div class="two">
+      <div>
+        <h3>Laboratory and field</h3>
+        <div class="chips">
+          <span class="chip">Root sectioning and microscopy</span>
+          <span class="chip">Root Anatomy Tool imaging</span>
+          <span class="chip">ImageJ</span>
+          <span class="chip">Hydroponics</span>
+          <span class="chip">DNA extraction</span>
+          <span class="chip">Primer design and PCR</span>
+          <span class="chip">Wheat crossing</span>
+          <span class="chip">Field phenotyping</span>
+        </div>
+        <h3>Analysis</h3>
+        <div class="chips">
+          <span class="chip">R</span>
+          <span class="chip">Genome-wide association analysis</span>
+          <span class="chip">Linkage disequilibrium and haplotypes</span>
+          <span class="chip">Linux command line</span>
+          <span class="chip">Ensembl and UCSC genome browsers</span>
+          <span class="chip">ddRAD sequencing analysis</span>
+        </div>
+      </div>
+      <div>
+        <h3>Education</h3>
+        <div class="timeline">
+          <div class="what">
+            <strong>M.S., Plant Science</strong>
+            <span class="org">University of Missouri · expected Summer 2027</span>
+          </div>
+          <div class="what">
+            <strong>Graduate study, Plant Science</strong>
+            <span class="org">South Dakota State University · 2025 – 2026</span>
+          </div>
+          <div class="what">
+            <strong>B.Tech., Agricultural Biotechnology</strong>
+            <span class="org">Punjab Agricultural University · 2025</span>
+          </div>
+        </div>
+        <h3>Memberships</h3>
+        <div class="chips">
+          <span class="chip">American Society of Plant Biologists</span>
+          <span class="chip">Crop Science Society of America</span>
+          <span class="chip">Association of Agricultural Scientists of Indian Origin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <header>
+      <span class="eyebrow">Contact</span>
+      <h2>Get in touch</h2>
+    </header>
+    <div class="contact">
+      <p>I am happy to talk about root biology, wheat genetics, or imaging samples on the Root Anatomy Tool.</p>
+      <div class="contact-row">
+        <span class="addr" id="email">jkd8p@missouri.edu</span>
+        <button class="copy" id="copy-email" type="button">Copy email</button>
+      </div>
+      <div class="contact-row">
+        <a href="https://www.linkedin.com/in/jasleenkaur0035" target="_blank" rel="noopener">linkedin.com/in/jasleenkaur0035</a>
+      </div>
+      <p class="org" style="color:var(--muted);font-size:0.9rem">Division of Plant Science and Technology, University of Missouri, Columbia, Missouri</p>
+    </div>
+  </section>
+
+  <footer>© 2026 Jasleen Kaur</footer>
+</div>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function () {
+  var btn = this, text = document.getElementById('email').textContent;
+  function done(msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); }
+  function fallback() {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected');
+  }
+  try { navigator.clipboard.writeText(text).then(function () { done('Copied'); }, fallback); }
+  catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
