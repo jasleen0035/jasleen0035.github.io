@@ -180,6 +180,8 @@ img { max-width: 100%; }
 .life figure { margin: 0; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
 .life img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; background: var(--rule); }
 .life figcaption { text-align: left; display: grid; gap: 0.1rem; }
+.life img.uncropped { aspect-ratio: auto; object-fit: contain; height: auto; }
+.life .meta { display:block; font-size:.9em; opacity:.85; margin:.25em 0 .5em; }
 .life .credit { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
 .life figcaption strong { color: var(--fg); font-weight: 600; font-size: 0.92rem; }
 </style>
@@ -349,8 +351,8 @@ img { max-width: 100%; }
         <figcaption><strong>Indian Night</strong>Hosted a segment as master of ceremonies (MC) · October 2026</figcaption>
       </figure>
       <figure>
-        <img src="images/tribune-technominds-2015.jpg" alt="Newspaper photo of school students holding award plaques and certificates at the TechnoMinds 2015 prize ceremony, with their teachers" loading="lazy">
-        <figcaption><strong>TechnoMinds 2015 · Second position</strong>A win I will always cherish. It is where my presenting journey began, and where I found out how much I love sharing my work with people.<span class="credit">Photo: The Tribune, 28 July 2015</span></figcaption>
+        <img class="uncropped" src="images/tribune-technominds-2015.jpg" alt="Newspaper photo of school students holding award plaques and certificates at the TechnoMinds 2015 prize ceremony, with their teachers" loading="lazy">
+        <figcaption><strong>Techno Minds 2015 · Second position</strong><span class="meta">Annual inter-school technology competition for classes VIII–X, held at Shemrock Senior Secondary School, Mohali. Eighteen schools from the Chandigarh tricity took part, presenting on wireless technology, Android technology and artificial intelligence.</span>A win I will always cherish. It is where my presenting journey began, and where I found out how much I love sharing my work with people.<span class="credit">Photo and report: The Tribune (Chandigarh edition), 28 July 2015</span></figcaption>
       </figure>
     </div>
   </section>
