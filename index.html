@@ -105,7 +105,8 @@ section h2 { font-size: 1.75rem; }
 
 .gallery { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 1rem; }
 .gallery figure { margin: 0; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
-.gallery figure:first-child { grid-row: span 2; }
+.gallery { grid-template-columns: 1fr 1fr; }
+.gallery img.top { object-position: center top; }
 .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; background: var(--rule); }
 .gallery figcaption { text-align: left; display: grid; gap: 0.1rem; }
 .gallery figcaption strong { color: var(--fg); font-weight: 600; font-size: 0.92rem; }
@@ -148,7 +149,6 @@ footer { font-size: 0.8rem; color: var(--muted); }
   .hero { grid-template-columns: 1fr; gap: 1.75rem; }
   figure.micro { max-width: 20rem; justify-self: center; width: 100%; }
   .strands, .two, .gallery { grid-template-columns: 1fr; }
-  .gallery figure:first-child { grid-row: auto; }
   .job { grid-template-columns: 1fr; gap: 0.3rem; }
   .pubs li { grid-template-columns: 1fr; gap: 0.2rem; }
 }
@@ -336,6 +336,10 @@ img { max-width: 100%; }
       <figure>
         <img src="images/aspb-poster.jpg" alt="Jasleen and a lab colleague beside her poster at the ASPB Midwestern Section Meeting">
         <figcaption><strong>ASPB Midwestern Section Meeting</strong>Poster session · Columbia, Missouri</figcaption>
+      </figure>
+      <figure>
+        <img class="top" src="images/rcaf-poster-2026.jpg" alt="Jasleen standing beside her research poster on root metaxylem vessel size in wheat at the Research and Creative Activities Forum" loading="lazy">
+        <figcaption><strong>Research and Creative Activities Forum (RCAF)</strong>Graduate Professional Council poster forum, Life Sciences · Memorial Union, University of Missouri · 28 October 2026</figcaption>
       </figure>
     </div>
   </section>
