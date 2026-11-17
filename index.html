@@ -174,6 +174,14 @@ img { max-width: 100%; }
 .tool-card p { color: var(--muted); font-size: 0.95rem; margin: 0; }
 .tool-card .tool-facts { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
 .tool-card a.tool-open { justify-self: start; font-size: 0.92rem; }
+
+/* Beyond the lab */
+.life { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 1rem; }
+.life figure { margin: 0; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
+.life img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; background: var(--rule); }
+.life figcaption { text-align: left; display: grid; gap: 0.1rem; }
+.life .credit { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+.life figcaption strong { color: var(--fg); font-weight: 600; font-size: 0.92rem; }
 </style>
 </head>
 <body>
@@ -326,6 +334,23 @@ img { max-width: 100%; }
       <figure>
         <img src="images/aspb-poster.jpg" alt="Jasleen and a lab colleague beside her poster at the ASPB Midwestern Section Meeting">
         <figcaption><strong>ASPB Midwestern Section Meeting</strong>Poster session · Columbia, Missouri</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="beyond">
+    <header>
+      <span class="eyebrow">Community</span>
+      <h2>Beyond the lab</h2>
+    </header>
+    <div class="life">
+      <figure>
+        <img src="images/indian-night-hosting.jpg" alt="Jasleen in traditional dress speaking into a microphone on stage beside a co-host, in front of a red theatre curtain" loading="lazy">
+        <figcaption><strong>Indian Night</strong>Hosted a segment as master of ceremonies (MC) · October 2026</figcaption>
+      </figure>
+      <figure>
+        <img src="images/tribune-technominds-2015.jpg" alt="Newspaper photo of school students holding award plaques and certificates at the TechnoMinds 2015 prize ceremony, with their teachers" loading="lazy">
+        <figcaption><strong>TechnoMinds 2015 · Second position</strong>A win I will always cherish. It is where my presenting journey began, and where I found out how much I love sharing my work with people.<span class="credit">Photo: The Tribune, 28 July 2015</span></figcaption>
       </figure>
     </div>
   </section>
